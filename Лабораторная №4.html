@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Лабораторная работа №4</title>
+</head>
+<body>
+	<script type="text/javascript">
+		openWindow();
+		function openWindow(){
+			let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=500,height=500,left=0,top=0`;
+			let newWindow = open(`http://google.com`,`_blank`, params);
+			newWindow.focus();
+			let i = 0;
+			let timer = setInterval(
+				()=> {
+					i++;
+					console.log(i);
+					if (i==5) {
+						newWindow.close();
+						clearInterval(timer);
+					}
+					if (newWindow.closed) {
+						console.log("Окно закрыто");
+						clearInterval(timer);
+					}
+				},
+				1000
+			);
+		}
+	</script>
+</body>
+</html>
